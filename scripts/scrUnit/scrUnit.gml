@@ -13,7 +13,7 @@ function Unit(){
 ///
 function UnitClickGetTargetPosition()
 {
-	if(selected && mouse_check_button_pressed(mb_left))
+	if(selected && mouse_check_button_pressed(mb_right))
 	{
 		xTargetPosition = mouse_x;
 		yTargetPosition = mouse_y;
@@ -53,9 +53,11 @@ function UnitMoveToTarget()
 		y += ySpd;
 		state = UNITSTATE.IDLE;
 	}
-	x += xSpd;
-	y += ySpd;
-	
+	if( _dist >= moveSpd)
+	{
+		x += xSpd;
+		y += ySpd;
+	}
 	//if((x == xTargetPosition && y == yTargetPosition) || )
 	//{
 	//	xTargetPosition = 0;

@@ -10,6 +10,9 @@ testMouseButtonReleased = 0;
 //MOUSE SELECT UNIT VALUES
 
 selectedUnitsList = ds_list_create();
+
+//_list = ds_list_create();
+lastItem = 0;
 //selecting = false;
 
 //RECTANGLE

@@ -21,10 +21,10 @@
     {"name":"Sprites","order":1,"path":"folders/Sprites.yy",},
     {"name":"Entities","order":1,"path":"folders/Sprites/Entities.yy",},
     {"name":"Units","order":1,"path":"folders/Sprites/Entities/Units.yy",},
-    {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
-    {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
     {"name":"SFX","order":2,"path":"folders/Sprites/SFX.yy",},
     {"name":"Mouse","order":1,"path":"folders/Sprites/SFX/Mouse.yy",},
+    {"name":"Tile Sets","order":2,"path":"folders/Tile Sets.yy",},
+    {"name":"Timelines","order":8,"path":"folders/Timelines.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"oEntity","order":2,"path":"objects/oEntity/oEntity.yy",},

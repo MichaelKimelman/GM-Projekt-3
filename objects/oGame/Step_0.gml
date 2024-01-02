@@ -19,10 +19,18 @@ else
 	}
 }
 
-//SELECT UNIT(S)
+//SELECT UNIT(S) RECTANGLE COORDINATES FOR DRAW/COLLISION
 if(mouse_check_button(mb_left))
 {
-	selecting = true;
+	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+	{
+		with(selectedUnitsList[| i])
+		{
+			selected = false;
+		}
+	}
+	ds_list_clear(selectedUnitsList);
+	//selecting = true;
 	if(mouseXFirstClick == 0 && mouseYFirstClick == 0)
 	{
 		mouseXFirstClick = mouse_x;
@@ -35,6 +43,35 @@ if(mouse_check_button(mb_left))
 	
 }
 
+//SELECT UNIT(S) FUNCTIONALITY
+if(mouse_check_button_released(mb_left))
+{
+	var _list = ds_list_create();
+	//selecting = false
+	//_list = 
+	
+	var _listSize = collision_rectangle_list(mouseXFirstClick, mouseYFirstClick, mouseXCurrent, mouseYCurrent, oUnit, false, true, selectedUnitsList, false);
+	
+	//if(ds_list_size(_list) != 0)
+	//{
+		for(var i = 0; i < _listSize; i++)
+		{
+			with(selectedUnitsList[| i])
+			{
+				selected = true;
+			}
+		}
+	//}
+	
+	mouseXFirstClick = 0;
+	mouseYFirstClick = 0;
+	
+	mouseXCurrent = 0;
+	mouseYCurrent = 0;
+	
+	ds_list_clear(_list);
+	//testMouseButtonReleased++;
+}
 //if(selecting)
 //{
 //	rectangleDrawBuffer++;
@@ -48,10 +85,3 @@ if(mouse_check_button(mb_left))
 //	rectangleDrawBuffer = 0;
 //}
 
-if(mouse_check_button_released(mb_left))
-{
-	//selecting = false
-	mouseXFirstClick = 0;
-	mouseYFirstClick = 0;
-	//testMouseButtonReleased++;
-}
