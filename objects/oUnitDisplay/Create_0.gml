@@ -2,4 +2,7 @@
 // You can write your code in this editor
 
 
-//Draw visible rectangel && collision rectangle
+hovering = false;
+clicked = false;
+creatorUnitId = 0;
+markedForDestruction = false;

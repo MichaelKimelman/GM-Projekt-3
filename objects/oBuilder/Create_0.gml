@@ -5,9 +5,15 @@
 event_inherited();
 
 state = UNITSTATE.IDLE;
+
+unitName = "Builder";
 moveSpd = 1.5;
 
 unitScript[UNITSTATE.IDLE] = BuilderFreeState;
 unitScript[UNITSTATE.MOVE] = UnitMoveToTarget;
+unitScript[UNITSTATE.ACTION] = BuildBuilding;
 
-//selected = true;
+getReadyToBuild = 0;
+
+buildXPosition = 0;
+buildYPosition = 0;

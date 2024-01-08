@@ -13,13 +13,17 @@
 //mouseYCurrent
 //mouseXFirstClick
 //mouseYFirstClick
-draw_text(200, 250, "mouse x start: " + string(mouseXFirstClick));
 
-draw_text(200, 300, "mouse y start: " + string(mouseYFirstClick));
+draw_text(200, 250, "N# of Bases: " + string(instance_number(oBase)));
+//draw_text(200, 250, "mouse x start: " + string(mouseXFirstClick));
 
-draw_text(200, 350, "mouse x current: " + string(mouseXCurrent));
+//draw_text(200, 300, "mouse y start: " + string(mouseYFirstClick));
 
-draw_text(200, 400, "mouse y current: " + string(mouseYCurrent));
+//draw_text(200, 350, "mouse x current: " + string(mouseXCurrent));
+
+//draw_text(200, 400, "mouse y current: " + string(mouseYCurrent));
+
+
 
 //draw_text(200, 450, "list: " + string(ds_list_size(_list)));
 

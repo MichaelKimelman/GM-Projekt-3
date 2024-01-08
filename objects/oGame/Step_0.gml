@@ -27,6 +27,8 @@ if(mouse_check_button(mb_left))
 		with(selectedUnitsList[| i])
 		{
 			selected = false;
+			action1Selected = false;
+			groupSelected = false;
 		}
 	}
 	ds_list_clear(selectedUnitsList);
@@ -43,10 +45,58 @@ if(mouse_check_button(mb_left))
 	
 }
 
-//SELECT UNIT(S) FUNCTIONALITY
-if(mouse_check_button_released(mb_left))
+//MOUSE PRESS SELECT UNIT/BUILDING
+//(position_meeting(mouse_x, mouse_y, oUnit) || position_meeting(mouse_x, mouse_y, oBuilding))
+
+if(mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, oEntity))//SOMETHING NOT RIGHT///
 {
-	var _list = ds_list_create();
+	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+	{
+		with(selectedUnitsList[| i])
+		{
+			selected = false;
+			action1Selected = false;
+			groupSelected = false;
+		}
+	}
+	ds_list_clear(selectedUnitsList);
+	
+	var _unit = collision_point(mouse_x, mouse_y, oEntity, false, true);
+	
+	ds_list_add(selectedUnitsList, _unit);
+	with(_unit)
+	{
+		selected = true;
+	}
+	
+	//switch(_unit.object_index)
+	//{
+	//	case oUnit:
+	//	
+	//	break;
+	//	
+	//	case oBuilding
+	//}
+		//collision_point(mouse_x, mouse_y,oUnit)
+}
+	//else if(mouse_check_button_pressed(mb_left))
+	//{
+	//	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+	//	{
+	//		with(selectedUnitsList[| i])
+	//		{
+	//			selected = false;
+	//			action1Selected = false;
+	//			groupSelected = false;
+	//		}
+	//	}
+	//}
+
+
+//SELECT UNIT(S) FUNCTIONALITY
+if(mouse_check_button_released(mb_left) && !mouse_check_button_pressed(mb_left))
+{
+	//var _list = ds_list_create();
 	//selecting = false
 	//_list = 
 	
@@ -54,13 +104,28 @@ if(mouse_check_button_released(mb_left))
 	
 	//if(ds_list_size(_list) != 0)
 	//{
-		for(var i = 0; i < _listSize; i++)
+	if(ds_list_size(selectedUnitsList) == 1)
+	{
+		with(selectedUnitsList[| 0])
 		{
+			selected = true;
+		}
+	}
+	else if(ds_list_size(selectedUnitsList) > 1)
+	{
+		for(var i = 0; i < _listSize; i++)//FIX 1/MANY UNIT(S) SELECTED( if ds list size == 1 -> selected/
+		{								  //else if ds list size > 1 -> groupselected
 			with(selectedUnitsList[| i])
 			{
-				selected = true;
+				groupSelected = true;
 			}
 		}
+	}
+	else
+	{
+		
+	}
+		
 	//}
 	
 	mouseXFirstClick = 0;
@@ -69,7 +134,7 @@ if(mouse_check_button_released(mb_left))
 	mouseXCurrent = 0;
 	mouseYCurrent = 0;
 	
-	ds_list_clear(_list);
+	//ds_list_clear(_list);
 	//testMouseButtonReleased++;
 }
 //if(selecting)

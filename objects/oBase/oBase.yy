@@ -1,18 +1,20 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "oUnitSelector",
+  "name": "oBase",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,},
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Game Control",
-    "path": "folders/Objects/Game Control.yy",
+    "name": "Buildings",
+    "path": "folders/Objects/Entities/Buildings.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oBuilding",
+    "path": "objects/oBuilding/oBuilding.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -28,7 +30,10 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": null,
+  "spriteId": {
+    "name": "sBase1",
+    "path": "sprites/sBase1/sBase1.yy",
+  },
   "spriteMaskId": null,
   "visible": true,
 }

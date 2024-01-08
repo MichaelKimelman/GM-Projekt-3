@@ -4,9 +4,34 @@ function scrBuilder(){
 
 }
 
+
+
+
+///
+/// Free State
+///
 function BuilderFreeState()
 {
 	UnitClickGetTargetPosition();
 }
 
 
+
+
+///
+/// Build Building
+///
+function BuildBuilding()///FIXA SÅ ATT BYGGER EFTER loading
+{
+	getReadyToBuild++;
+	
+	if(getReadyToBuild > 300)
+	{
+		instance_create_layer(buildXPosition, buildYPosition, "Instances", oBase);
+		getReadyToBuild = 0;
+		
+		state = UNITSTATE.IDLE
+		action1Commited = false;
+		
+	}
+}
