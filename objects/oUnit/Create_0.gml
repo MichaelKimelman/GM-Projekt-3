@@ -1,9 +1,10 @@
 /// @description Insert description here
 // You can write your code in this editor
+event_inherited();
 
 state = UNITSTATE.IDLE;
 
-unitName = "Unit";
+entityName = "Unit";
 moveSpd = 0;
 
 xSpd = 0;
