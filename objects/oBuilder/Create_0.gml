@@ -6,7 +6,7 @@ event_inherited();
 
 state = UNITSTATE.IDLE;
 
-unitName = "Builder";
+entityName = "Builder";
 moveSpd = 1.5;
 
 unitScript[UNITSTATE.IDLE] = BuilderFreeState;

@@ -14,8 +14,8 @@
     "path": "folders/Objects/UI.yy",
   },
   "parentObjectId": {
-    "name": "pUI",
-    "path": "objects/pUI/pUI.yy",
+    "name": "pDisplay",
+    "path": "objects/pDisplay/pDisplay.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

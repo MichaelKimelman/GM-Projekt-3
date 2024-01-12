@@ -15,10 +15,15 @@ selectedUnitsList = ds_list_create();
 lastItem = 0;
 //selecting = false;
 
-//RECTANGLE
-//rectangleDrawBuffer = 0;
+//SELECTRECTANGLE COORDINATES
 mouseXFirstClick = 0;
 mouseYFirstClick = 0;
 
 mouseXCurrent = 0;
 mouseYCurrent = 0;
+
+//TYPE OF MOUSE CLICK VARIABLE
+//mouseHeldDown = 0;
+
+mouseClick = false;
+mouseHeld = false;

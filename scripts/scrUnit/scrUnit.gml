@@ -136,13 +136,14 @@ function UnitCollision()
 	
 	var _collision = false;
 	// x Collision
-	if(place_meeting(x + xSpd, y, oUnit))
+	if(place_meeting(x + xSpd, y, oEntity))
 	{
 		xSpd = 0;
 		_collision = true;
 	}
+	
 	// y Collision
-	if(place_meeting(x , y + ySpd + 5, oUnit))
+	if(place_meeting(x , y + ySpd + 5, oEntity))
 	{
 		ySpd = 0;
 		_collision = true;

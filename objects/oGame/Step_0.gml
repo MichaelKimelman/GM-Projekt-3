@@ -19,114 +19,105 @@ else
 	}
 }
 
-//SELECT UNIT(S) RECTANGLE COORDINATES FOR DRAW/COLLISION
+//GENERAL ALL ENCOMPASSING CLICK CHECK
+
 if(mouse_check_button(mb_left))
 {
-	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
-	{
-		with(selectedUnitsList[| i])
-		{
-			selected = false;
-			action1Selected = false;
-			groupSelected = false;
-		}
-	}
-	ds_list_clear(selectedUnitsList);
-	//selecting = true;
 	if(mouseXFirstClick == 0 && mouseYFirstClick == 0)
 	{
 		mouseXFirstClick = mouse_x;
 		mouseYFirstClick = mouse_y;
 	}
 	
+	//CODE
+	if(position_meeting(mouseXFirstClick, mouseYFirstClick, oEntity))
+	{
+		mouseClick = true;
+	}
+	else
+	{
+		mouseHeld = true;
+	}
+	
+	if(ds_list_size(selectedUnitsList) > 0)
+	{
+		for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+		{
+			with(selectedUnitsList[| i])
+			{
+				selected = false;
+				//var oIndex = object_index;
+				//var oIndexName = object_get_name(object_index);
+				//var oIndexParentName = object_get_name(object_get_parent(object_index));
+				if(object_get_name(object_get_parent(object_index)) == "oUnit")
+				{
+					action1Selected = false;
+					groupSelected = false;
+				}
+			}
+		}
+		ds_list_clear(selectedUnitsList);
+	}
+	
+	
+	
 	mouseXCurrent = mouse_x;
 	mouseYCurrent = mouse_y;
-	//testMouseButtonContinualPressed++;
-	
 }
 
-//MOUSE PRESS SELECT UNIT/BUILDING
-//(position_meeting(mouse_x, mouse_y, oUnit) || position_meeting(mouse_x, mouse_y, oBuilding))
 
-if(mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, oEntity))//SOMETHING NOT RIGHT///
+
+//RELEASE MOUSE CLICK FUNCTIONALITY
+if(mouse_check_button_released(mb_left))
 {
-	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
-	{
-		with(selectedUnitsList[| i])
-		{
-			selected = false;
-			action1Selected = false;
-			groupSelected = false;
-		}
-	}
-	ds_list_clear(selectedUnitsList);
-	
-	var _unit = collision_point(mouse_x, mouse_y, oEntity, false, true);
-	
-	ds_list_add(selectedUnitsList, _unit);
-	with(_unit)
-	{
-		selected = true;
-	}
-	
-	//switch(_unit.object_index)
-	//{
-	//	case oUnit:
-	//	
-	//	break;
-	//	
-	//	case oBuilding
-	//}
-		//collision_point(mouse_x, mouse_y,oUnit)
-}
-	//else if(mouse_check_button_pressed(mb_left))
-	//{
-	//	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
-	//	{
-	//		with(selectedUnitsList[| i])
-	//		{
-	//			selected = false;
-	//			action1Selected = false;
-	//			groupSelected = false;
-	//		}
-	//	}
-	//}
 
-
-//SELECT UNIT(S) FUNCTIONALITY
-if(mouse_check_button_released(mb_left) && !mouse_check_button_pressed(mb_left))
-{
-	//var _list = ds_list_create();
-	//selecting = false
-	//_list = 
-	
-	var _listSize = collision_rectangle_list(mouseXFirstClick, mouseYFirstClick, mouseXCurrent, mouseYCurrent, oUnit, false, true, selectedUnitsList, false);
-	
-	//if(ds_list_size(_list) != 0)
-	//{
-	if(ds_list_size(selectedUnitsList) == 1)
+	if(mouseClick)
 	{
-		with(selectedUnitsList[| 0])
+		var _unit = collision_point(mouseXFirstClick, mouseYFirstClick, oEntity, false, true);
+	
+		ds_list_add(selectedUnitsList, _unit);
+		with(_unit)
 		{
 			selected = true;
 		}
 	}
-	else if(ds_list_size(selectedUnitsList) > 1)
+	else if(mouseHeld)
 	{
-		for(var i = 0; i < _listSize; i++)//FIX 1/MANY UNIT(S) SELECTED( if ds list size == 1 -> selected/
-		{								  //else if ds list size > 1 -> groupselected
-			with(selectedUnitsList[| i])
+		var _listSize = collision_rectangle_list(mouseXFirstClick, mouseYFirstClick, mouseXCurrent, mouseYCurrent, oUnit, false, true, selectedUnitsList, false);
+		
+		if(ds_list_size(selectedUnitsList) == 0)
+		{
+			_listSize = collision_rectangle_list(mouseXFirstClick, mouseYFirstClick, mouseXCurrent, mouseYCurrent, oBuilding, false, true, selectedUnitsList, false);
+			
+			if(ds_list_size(selectedUnitsList) > 1)
 			{
-				groupSelected = true;
+				ds_list_clear(selectedUnitsList);
+			}
+			
+		}
+
+		if(ds_list_size(selectedUnitsList) == 1)
+		{
+			with(selectedUnitsList[| 0])
+			{
+				selected = true;
 			}
 		}
+		else if(ds_list_size(selectedUnitsList) > 1)
+		{
+			for(var i = 0; i < _listSize; i++)//FIX 1/MANY UNIT(S) SELECTED( if ds list size == 1 -> selected/
+			{								  //else if ds list size > 1 -> groupselected
+				with(selectedUnitsList[| i])
+				{
+					groupSelected = true;
+				}
+			}
+		}
+		else
+		{
+			
+		}
 	}
-	else
-	{
-		
-	}
-		
-	//}
 	
 	mouseXFirstClick = 0;
 	mouseYFirstClick = 0;
@@ -134,9 +125,14 @@ if(mouse_check_button_released(mb_left) && !mouse_check_button_pressed(mb_left))
 	mouseXCurrent = 0;
 	mouseYCurrent = 0;
 	
+	mouseClick = false;
+	mouseHeld = false;
+	
 	//ds_list_clear(_list);
 	//testMouseButtonReleased++;
 }
+
+//OLD CODE
 //if(selecting)
 //{
 //	rectangleDrawBuffer++;
@@ -149,4 +145,95 @@ if(mouse_check_button_released(mb_left) && !mouse_check_button_pressed(mb_left))
 //{
 //	rectangleDrawBuffer = 0;
 //}
+
+//SELECT UNIT(S) RECTANGLE COORDINATES FOR DRAW/COLLISION
+//if(mouse_check_button(mb_left) && mouseHeldDown > 11)
+//{
+//	//if(mouseHeldDown < 2)
+//	//{
+//		//mouseHeldDown++;
+//	//}
+//	if(ds_list_size(selectedUnitsList) > 0)
+//	{
+//		for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+//		{
+//			with(selectedUnitsList[| i])
+//			{
+//				selected = false;
+//				action1Selected = false;
+//				groupSelected = false;
+//			}
+//		}
+//		ds_list_clear(selectedUnitsList);
+//	}
+	
+//	//selecting = true;
+//	if(mouseXFirstClick == 0 && mouseYFirstClick == 0)
+//	{
+//		mouseXFirstClick = mouse_x;
+//		mouseYFirstClick = mouse_y;
+//	}
+	
+//	mouseXCurrent = mouse_x;
+//	mouseYCurrent = mouse_y;
+//	//testMouseButtonContinualPressed++;
+	
+//}
+
+//MOUSE PRESS SELECT UNIT/BUILDING
+//(position_meeting(mouse_x, mouse_y, oUnit) || position_meeting(mouse_x, mouse_y, oBuilding))
+
+//if(mouse_check_button_pressed(mb_left) && position_meeting(mouse_x, mouse_y, oEntity) && mouseHeldDown < 12)//SOMETHING NOT RIGHT///
+//{
+//	//mouseHeldDown++;
+	
+//	if(mouseHeldDown < 2)
+//	{
+	
+//		for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+//		{
+//			with(selectedUnitsList[| i])
+//			{
+//				selected = false;
+//				action1Selected = false;
+//				groupSelected = false;
+//			}
+//		}
+//		ds_list_clear(selectedUnitsList);
+//	}
+	
+//	if(mouseHeldDown < 2)
+//	{
+//		var _unit = collision_point(mouse_x, mouse_y, oEntity, false, true);
+	
+//		ds_list_add(selectedUnitsList, _unit);
+//		with(_unit)
+//		{
+//			selected = true;
+//		}
+//	}
+	
+	
+//	//switch(_unit.object_index)
+//	//{
+//	//	case oUnit:
+//	//	
+//	//	break;
+//	//	
+//	//	case oBuilding
+//	//}
+//		//collision_point(mouse_x, mouse_y,oUnit)
+//}
+	//else if(mouse_check_button_pressed(mb_left))
+	//{
+	//	for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+	//	{
+	//		with(selectedUnitsList[| i])
+	//		{
+	//			selected = false;
+	//			action1Selected = false;
+	//			groupSelected = false;
+	//		}
+	//	}
+	//}
 

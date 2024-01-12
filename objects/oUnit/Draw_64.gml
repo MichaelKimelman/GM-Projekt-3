@@ -3,15 +3,15 @@
 
 
 //draw_text(200, 630,"Button one pressed: " + string(oneButton));
-
-if(selected && !instance_exists(oUnitDisplay))
-{
-	//draw_sprite(sUnitDisplay,0, 0, window_get_height() - 200);
+event_inherited();
+//if(selected && !instance_exists(oUnitDisplay))
+//{
+//	//draw_sprite(sUnitDisplay,0, 0, window_get_height() - 200);
 	
-	var _uiDisplay = instance_create_layer(0, window_get_height() - 200, "Instances", oUnitDisplay);
+//	var _uiDisplay = instance_create_layer(0, window_get_height() - 200, "Instances", oUnitDisplay);
 	
-	with(_uiDisplay)
-	{
-		creatorUnitId = other.id;
-	}
-}
+//	with(_uiDisplay)
+//	{
+//		creatorUnitId = other.id;
+//	}
+//}

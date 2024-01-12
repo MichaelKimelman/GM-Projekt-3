@@ -3,3 +3,5 @@
 
 event_inherited();
 depth = 10;
+
+entityName = "Base";
