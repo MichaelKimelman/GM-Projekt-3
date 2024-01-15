@@ -7,3 +7,6 @@ event_inherited();
 state = BUILDINGSTATE.IDLE;
 
 buildingScript[BUILDINGSTATE.IDLE] = -1;
+
+buildUnitProgress = 0;
+spawnBlocked = false;

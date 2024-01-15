@@ -17,3 +17,5 @@ getReadyToBuild = 0;
 
 buildXPosition = 0;
 buildYPosition = 0;
+
+image_speed = 0;

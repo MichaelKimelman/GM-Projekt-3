@@ -46,12 +46,12 @@ if(mouse_check_button(mb_left))
 			with(selectedUnitsList[| i])
 			{
 				selected = false;
+				action1Selected = false;
 				//var oIndex = object_index;
 				//var oIndexName = object_get_name(object_index);
 				//var oIndexParentName = object_get_name(object_get_parent(object_index));
 				if(object_get_name(object_get_parent(object_index)) == "oUnit")
 				{
-					action1Selected = false;
 					groupSelected = false;
 				}
 			}

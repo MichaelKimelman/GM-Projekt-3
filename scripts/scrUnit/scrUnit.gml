@@ -28,7 +28,7 @@ function UnitClickGetTargetPosition()
 			if(selected)
 			{
 				//NEST IN SELECTED
-				if(action1Selected)
+				if(action1Selected)//CHANGE TO SWITCH PROBABLY
 				{
 					//REMAKE INTO SCRIPT SPECIFIED "Move into position to Build"
 					var _calcInst = instance_create_layer(xTargetPosition, yTargetPosition,"Instances", oCoordinateGetter);
@@ -89,7 +89,7 @@ function UnitMoveToTarget()
 		x += xSpd;
 		y += ySpd;
 		
-		if(action1Commited)
+		if(action1Commited)//CHANGE TO SWITCH PROBABLY
 		{
 			state = UNITSTATE.ACTION;
 		}
@@ -162,7 +162,7 @@ function CheckForInputs()
 {
 	if(selected)
 	{
-		if(oneButton)
+		if(oneButton)//CHANGE TO SWITCH PROBABLY
 		{
 			action1Selected = !action1Selected;
 		}
