@@ -27,3 +27,6 @@ mouseYCurrent = 0;
 
 mouseClick = false;
 mouseHeld = false;
+
+//UI HOVER BEHAVIOUR
+instanceMeeting = noone;

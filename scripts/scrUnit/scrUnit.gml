@@ -20,26 +20,36 @@ function UnitClickGetTargetPosition()
 		
 		if(mouse_check_button_pressed(mb_right))//MOVEMENT FOR GROUP OR POTENTIAL ACTION FOR SELECTED
 		{
-			action1Commited = false; //CANCEL COMMIT(BECAUSE OF NEW MOVEMENT)
+			commitedAbility = ABILITY.ZERO;
+			//action1Commited = false; //CANCEL COMMIT(BECAUSE OF NEW MOVEMENT) CHANGE TO commitedAbility = ABILITY.ZERO
 			
 			xTargetPosition = mouse_x;
 			yTargetPosition = mouse_y;
 			
 			if(selected)
 			{
+				//EXECUTE ACTIONSCRIPT
+				
+				//if(abilityScript[selectedAbility] != -1)
+				//{
+				//	script_execute_ext(abilityScript[selectedAbility],[]);
+				//}
+				
 				//NEST IN SELECTED
-				if(action1Selected)//CHANGE TO SWITCH PROBABLY
+				if(selectedAbility != ABILITY.ZERO)//CHANGE TO SWITCH PROBABLY
 				{
 					//REMAKE INTO SCRIPT SPECIFIED "Move into position to Build"
 					var _calcInst = instance_create_layer(xTargetPosition, yTargetPosition,"Instances", oCoordinateGetter);
-					
-					buildXPosition = xTargetPosition;
-					buildYPosition = yTargetPosition;
+					//CHANGE TO 
+					abilityXPosition = xTargetPosition;
+					abilityYPosition = yTargetPosition;
 					
 					with(_calcInst)
 					{
-						var _sprBuildingInfo = sprite_get_info(sBase0);
-						var _sprUnitInfo = sprite_get_info(sBuilder);
+						var _sprBuildingInfo = sprite_get_info(sBase0);// MAKE MODULAR
+						//var _unitSpr = sprite_get_name( sprite_index);
+						var _sprUnitInfo = sprite_get_info(other.sprite_index);
+						//_sprUnitInfo = sprite_get_info(sBuilder);
 						var _dir = point_direction(x, y, other.x, other.y);
 						other.xTargetPosition = x + lengthdir_x((_sprBuildingInfo.width/2) + _sprUnitInfo.width, _dir);
 						other.yTargetPosition = y + lengthdir_y((_sprBuildingInfo.width/2) + _sprUnitInfo.width, _dir);
@@ -47,12 +57,14 @@ function UnitClickGetTargetPosition()
 						instance_destroy();
 					}
 					
-					action1Selected = false;
-					action1Commited = true;
+					commitedAbility = selectedAbility;
+					selectedAbility = ABILITY.ZERO;
+					//action1Selected = false;//DELETE
+					//action1Commited = true;//DELETE
 				}
 			}
 			
-			state = UNITSTATE.MOVE;
+			state = ENTITYSTATE.MOVE;
 			if(instance_exists(oClick))
 			{
 				with(oClick)
@@ -89,13 +101,15 @@ function UnitMoveToTarget()
 		x += xSpd;
 		y += ySpd;
 		
-		if(action1Commited)//CHANGE TO SWITCH PROBABLY
+		if(commitedAbility != ABILITY.ZERO)//CHANGE TO IF(commitedAbility != -1) if(action1Commited)
 		{
-			state = UNITSTATE.ACTION;
+			state = ENTITYSTATE.ACTION;
+			//SET ABILITY SCRIPT TO [commitedAbility]
+			//ACTION STATE CALLS ABILITY EXECUTING SCRIPT
 		}
 		else
 		{
-			state = UNITSTATE.IDLE;
+			state = ENTITYSTATE.IDLE;
 		}
 	}
 	
@@ -107,7 +121,7 @@ function UnitMoveToTarget()
 	else if(noPhysicalMovementTimer >= 180) //STOP UNIT (UNTIL I FIGURE OUT PATHING TO WALK AROUND OR MORE 
 	{									    //SOPHISTICATED METHOD WHEN TO STOP MOVEMENT
 		noPhysicalMovementTimer = 0; 
-		state = UNITSTATE.IDLE
+		state = ENTITYSTATE.IDLE
 	}
 	
 	if( _dist >= moveSpd)
@@ -156,15 +170,96 @@ function UnitCollision()
 
 
 ///
-/// Tracking Unit Inputs
+/// Tracking Unit Inputs, For Mouse Confirmation
 ///
 function CheckForInputs()
 {
 	if(selected)
 	{
-		if(oneButton)//CHANGE TO SWITCH PROBABLY
+		if(oneButton && abilityScript[ABILITY.ONE] != -1)//CHANGE TO SWITCH PROBABLY
 		{
-			action1Selected = !action1Selected;
+			if(selectedAbility != ABILITY.ONE)
+			{
+				selectedAbility = ABILITY.ONE;
+				
+			}
+			else// if(selectedAbility == ABILITY.ONE)
+			{
+				selectedAbility = ABILITY.ZERO;
+			}
+
+			
+			//action1Selected = !action1Selected;
+		}
+		else if(twoButton && abilityScript[ABILITY.TWO] != -1)
+		{
+			//selectedAbility = ABILITY.TWO;
+			
+			if(selectedAbility != ABILITY.TWO)
+			{
+				selectedAbility = ABILITY.TWO;
+				
+			}
+			else// if(selectedAbility == ABILITY.TWO)
+			{
+				selectedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(threeButton && abilityScript[ABILITY.THREE] != -1)
+		{
+			//selectedAbility = ABILITY.THREE;
+			
+			if(selectedAbility != ABILITY.THREE)
+			{
+				selectedAbility = ABILITY.THREE;
+				
+			}
+			else// if(selectedAbility == ABILITY.THREE)
+			{
+				selectedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(fourButton && abilityScript[ABILITY.FOUR] != -1)
+		{
+			//selectedAbility = ABILITY.FOUR;
+			
+			if(selectedAbility != ABILITY.FOUR)
+			{
+				selectedAbility = ABILITY.FOUR;
+				
+			}
+			else// if(selectedAbility == ABILITY.FOUR)
+			{
+				selectedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(fiveButton && abilityScript[ABILITY.FIVE] != -1)
+		{
+			//selectedAbility = ABILITY.FIVE;
+			
+			if(selectedAbility != ABILITY.FIVE)
+			{
+				selectedAbility = ABILITY.FIVE;
+				
+			}
+			else// if(selectedAbility == ABILITY.FIVE)
+			{
+				selectedAbility = ABILITY.ZERO;
+			}
 		}
 	}
+}
+
+
+
+
+///
+/// ENTITYSTATE.ACTION -> Execute ability Script
+///
+function UnitExecuteAbility()
+{
+	//if(abilityScript[selectedAbility] != -1)
+	//{
+		script_execute_ext(abilityScript[commitedAbility],[]);
+	//}
 }

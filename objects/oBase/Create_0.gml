@@ -6,5 +6,11 @@ depth = 10;
 
 entityName = "Base";
 
-buildingScript[BUILDINGSTATE.IDLE] = BuildingFreeState;
-buildingScript[BUILDINGSTATE.ACTION] = BuildUnit;
+//buildingScript[BUILDINGSTATE.IDLE] = BuildingFreeState;
+//buildingScript[BUILDINGSTATE.ACTION] = BuildUnit;
+
+entityScript[ENTITYSTATE.IDLE] = BuildingFreeState;
+//entityScript[ENTITYSTATE.ACTION] = BuildUnit;//RUN CHOSEN ABILITY SCRIPT
+abilityScript[ABILITY.ONE] = BuildUnit;
+
+buildableUnits = [oBuilder];

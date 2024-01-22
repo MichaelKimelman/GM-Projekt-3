@@ -27,11 +27,34 @@ function BuildBuilding()///FIXA SÅ ATT BYGGER EFTER loading
 	
 	if(getReadyToBuild > 300)
 	{
-		instance_create_layer(buildXPosition, buildYPosition, "Instances", oBase);
+		instance_create_layer(abilityXPosition, abilityYPosition, "Instances", oBase);
 		getReadyToBuild = 0;
 		
-		state = UNITSTATE.IDLE
-		action1Commited = false;
+		state = ENTITYSTATE.IDLE
+		commitedAbility = ABILITY.ZERO;
+		//action1Commited = false;//DELETE
+		
+	}
+}
+
+
+
+
+///
+///
+///
+function BuildBuildingFAST()///FIXA SÅ ATT BYGGER EFTER loading
+{
+	getReadyToBuild++;
+	
+	if(getReadyToBuild > 50)
+	{
+		instance_create_layer(abilityXPosition, abilityYPosition, "Instances", oBase);
+		getReadyToBuild = 0;
+		
+		state = ENTITYSTATE.IDLE
+		commitedAbility = ABILITY.ZERO;
+		//action1Commited = false;//DELETE
 		
 	}
 }

@@ -4,9 +4,13 @@
 event_inherited();
 
 
-state = BUILDINGSTATE.IDLE;
+state = ENTITYSTATE.IDLE;
 
-buildingScript[BUILDINGSTATE.IDLE] = -1;
+//buildingScript[BUILDINGSTATE.IDLE] = -1;
+
+//entityScript[BUILDINGSTATE.IDLE] = -1;
 
 buildUnitProgress = 0;
 spawnBlocked = false;
+
+entityScript[ENTITYSTATE.ACTION] = UnitExecuteAbility;

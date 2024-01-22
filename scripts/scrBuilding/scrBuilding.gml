@@ -18,9 +18,9 @@ function BuildingFreeState()
 		//DO SOMETHING THEN STATE = BUILDINGSTATE.ACTION
 		CheckForBuildingInputs();
 		
-		if(action1Commited)
+		if(commitedAbility != ABILITY.ZERO)
 		{
-			state = BUILDINGSTATE.ACTION;
+			state = ENTITYSTATE.ACTION;
 		}
 	}
 }
@@ -50,11 +50,9 @@ function BuildUnit()
 	if(buildUnitProgress >= 500 && !spawnBlocked)
 	{
 		buildUnitProgress = 0;
-		action1Commited = false;
-		state = BUILDINGSTATE.IDLE;
-		
-		
-		
+		//action1Commited = false;
+		commitedAbility = ABILITY.ZERO;
+		state = ENTITYSTATE.IDLE;
 		
 		instance_create_layer(x - 100, y, "Instances", oBuilder);
 	}
@@ -70,9 +68,81 @@ function CheckForBuildingInputs()
 {
 	if(selected)
 	{
-		if(oneButton)//CHANGE TO SWITCH PROBABLY
+		//if(oneButton)//CHANGE TO SWITCH PROBABLY
+		//{
+		//	action1Commited = true;
+		//}
+		
+		if(oneButton && abilityScript[ABILITY.ONE] != -1)//CHANGE TO SWITCH PROBABLY
 		{
-			action1Commited = true;
+			if(commitedAbility != ABILITY.ONE)
+			{
+				commitedAbility = ABILITY.ONE;
+				
+			}
+			else// if(selectedAbility == ABILITY.ONE)
+			{
+				commitedAbility = ABILITY.ZERO;
+			}
+
+			
+			//action1Selected = !action1Selected;
+		}
+		else if(twoButton && abilityScript[ABILITY.TWO] != -1)
+		{
+			//selectedAbility = ABILITY.TWO;
+			
+			if(commitedAbility != ABILITY.TWO)
+			{
+				commitedAbility = ABILITY.TWO;
+				
+			}
+			else// if(selectedAbility == ABILITY.TWO)
+			{
+				commitedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(threeButton && abilityScript[ABILITY.THREE] != -1)
+		{
+			//selectedAbility = ABILITY.THREE;
+			
+			if(commitedAbility != ABILITY.THREE)
+			{
+				commitedAbility = ABILITY.THREE;
+				
+			}
+			else// if(selectedAbility == ABILITY.THREE)
+			{
+				commitedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(fourButton && abilityScript[ABILITY.FOUR] != -1)
+		{
+			//selectedAbility = ABILITY.FOUR;
+			
+			if(commitedAbility != ABILITY.FOUR)
+			{
+				commitedAbility = ABILITY.FOUR;
+				
+			}
+			else// if(selectedAbility == ABILITY.FOUR)
+			{
+				commitedAbility = ABILITY.ZERO;
+			}
+		}
+		else if(fiveButton && abilityScript[ABILITY.FIVE] != -1)
+		{
+			//selectedAbility = ABILITY.FIVE;
+			
+			if(commitedAbility != ABILITY.FIVE)
+			{
+				commitedAbility = ABILITY.FIVE;
+				
+			}
+			else// if(selectedAbility == ABILITY.FIVE)
+			{
+				commitedAbility = ABILITY.ZERO;
+			}
 		}
 	}
 }

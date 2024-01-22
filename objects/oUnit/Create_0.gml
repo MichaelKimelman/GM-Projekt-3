@@ -2,7 +2,7 @@
 // You can write your code in this editor
 event_inherited();
 
-state = UNITSTATE.IDLE;
+state = ENTITYSTATE.IDLE;
 
 entityName = "Unit";
 moveSpd = 0;
@@ -18,7 +18,9 @@ groupSelected = false;
 
 noPhysicalMovementTimer = 0; //USED TO CHANGE STATE TO IDLE IF TOO LONG NO MOVEMENT
 
-unitScript[UNITSTATE.IDLE] = -1;
+//unitScript[UNITSTATE.IDLE] = -1;
 
-action1Selected = false;
-action1Commited = false;
+entityScript[ENTITYSTATE.ACTION] = UnitExecuteAbility;
+
+//action1Selected = false;
+//action1Commited = false;

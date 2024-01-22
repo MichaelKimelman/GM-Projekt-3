@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "pUI",
+  "name": "oUIAbility",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [],

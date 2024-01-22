@@ -14,7 +14,12 @@
 //mouseXFirstClick
 //mouseYFirstClick
 
-draw_text(200, 250, "N# of Bases: " + string(instance_number(oBase)));
+//draw_text(200, 250, "N# of Bases: " + string(instance_number(oBase)));
+
+if(global.gamePaused)
+{
+	draw_text_transformed(window_get_x(), window_get_y(), "PAUSED", 5, 5, 0); 
+}
 //draw_text(200, 250, "mouse x start: " + string(mouseXFirstClick));
 
 //draw_text(200, 300, "mouse y start: " + string(mouseYFirstClick));

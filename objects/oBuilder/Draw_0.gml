@@ -6,10 +6,16 @@
 // Inherit the parent event
 event_inherited();
 
-if(state == UNITSTATE.ACTION)
+if(state == ENTITYSTATE.ACTION)
 {
 	draw_text(x - 20, y - 50, string(getReadyToBuild) + "/300");
 }
+
+draw_text(x -20, y -65, "commitedAbility: " + string(commitedAbility));
+
+draw_text(x -20, y -80, "selectedAbility: " + string(selectedAbility));
+
+draw_text(x -20, y -95, "id: " + string(id));
 
 //draw_text(x - 20, y - 65, "action1Selected: " + string(action1Selected));
 

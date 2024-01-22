@@ -10,13 +10,17 @@ if(selected && !instance_exists(oUnitDisplay))
 	
 	with(_uiDisplay)
 	{
-		creatorUnitId = other.id;
+		creatorEntityId = other.id;
 	}
 	
-	var _uiAbilityDisplay = instance_create_layer(210, window_get_height() - 200, "Instances", oAbilityDisplay);
+	var _uiAbilityDisplay = instance_create_layer(210, window_get_height() - 200, "Instances", oAbilityDisplay,{ creatorEntityId :id});//SETS VALUE BEFORE RUNNING CREATE EVENT
+	//var _uiAbilityDisplay = instance_create_layer(210, window_get_height() - 200, "Instances", oAbilityDisplay);
+	//uiAbilityDisplay.creatorEntityId = id;
 	
-	with(_uiAbilityDisplay)
-	{
-		creatorUnitId = other.id;
-	}
+	//with(_uiAbilityDisplay)//RUNS CREATE EVENT AND THEN RUNS WITH CODE
+	//{
+	//	creatorEntityId = other.id;
+	//	
+	//	//entityAbilityArray = creatorEntityId.abilityScript
+	//}
 }

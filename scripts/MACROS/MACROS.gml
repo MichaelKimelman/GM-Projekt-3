@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-enum UNITSTATE
+enum ENTITYSTATE 
 {
 	IDLE,
 	MOVE,
@@ -8,9 +8,27 @@ enum UNITSTATE
 	
 }
 
-enum BUILDINGSTATE
+enum ABILITY 
 {
-	IDLE,
-	ACTION,
-	
+	ZERO,
+	ONE,
+	TWO,
+	THREE,
+	FOUR,
+	FIVE
 }
+
+//enum UNITSTATE //UNITSTATE
+//{
+//	IDLE,
+//	MOVE,
+//	ACTION,
+//	
+//}
+
+//enum BUILDINGSTATE //BUILDINGSTATE
+//{
+//	IDLE,
+//	ACTION,
+//	
+//}
