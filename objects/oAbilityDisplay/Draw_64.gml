@@ -5,13 +5,18 @@
 draw_self();
 
 //var _subImg = 0;
-draw_text(x, y - 20, "Number of abilities:" + string(numberOfAbilities));
-draw_text(x, y - 35, "entityAbilityArray:" + string(entityAbilityArray));
+
+//draw_text(x, y - 20, "Number of abilities:" + string(numberOfAbilities));
+//draw_text(x, y - 35, "entityAbilityArray:" + string(entityAbilityArray));
+
+
 //draw_text(x, y - 50, "unfindable object instance:" + string(object_get_name(1)));
 //draw_text(x, y - 20, "unfindable object instance 0 :" + string(object_get_name(0)));
 //draw_text(x, y - 35, "unfindable object instance 1:" + string(object_get_name(1)));
 //draw_text(x, y - 50, "unfindable object instance 2:" + string(object_get_name(2)));
-draw_text(x, y - 65, "creator:" + string(creatorEntityId.abilityScript));
+
+//draw_text(x, y - 65, "creator abilityArray:" + string(creatorEntityId.abilityScript));
+
 //draw_text(x, y - 65, "creator:" + string(creatorEntityId));
 
 //draw_text(x, y - 80, "forLoopComplete?:" + string(forLoopComplete));

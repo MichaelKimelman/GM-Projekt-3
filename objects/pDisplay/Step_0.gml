@@ -18,28 +18,28 @@ if(!global.gamePaused)
 		//	instanceMeeting.hovering = false;
 		//}
 		
-		if(object_get_name(object_index) != "oUIAbilityButton")
-		{	
-			if(hovering)
-			{
-				image_index = 1;
-			}
-			else
-			{
-				image_index = 0
-			}
-		}
-		else
-		{
-			if(hovering)
-			{
-				image_index = 3;
-			}
-			else if(!hovering)
-			{
-				image_index = 0
-			}
-		}
+		//if(object_get_name(object_index) != "oUIAbilityButton")
+		//{	
+		//	if(hovering)
+		//	{
+		//		image_index = 1;
+		//	}
+		//	else
+		//	{
+		//		image_index = 0
+		//	}
+		//}
+		//else
+		//{
+		//	if(hovering)
+		//	{
+		//		image_index = 3;
+		//	}
+		//	else if(!hovering)
+		//	{
+		//		image_index = 0
+		//	}
+		//}
 	//}
 	
 	

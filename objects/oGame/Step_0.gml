@@ -50,26 +50,58 @@ if(!global.gamePaused)
 			mouseHeld = true;
 		}
 		
-		if(ds_list_size(selectedUnitsList) > 0)
+		clickedUIButton = instance_position(window_mouse_get_x(), window_mouse_get_y(), oUIAbilityButton);
+		
+		//if(_uiListSize > 0)
+		//{
+		//	uiClicked = true;
+		//	for(var i = 0; i <_uiListSize; i++)
+		//	{
+		//		var _objName = object_get_name(interactedUIElements[| i].object_index);
+		//		if(_objName == "oUIAbilityButton")
+		//		{
+		//			clickedUIButton = interactedUIElements[| i];
+		//		}
+		//	}
+		//}
+		
+		
+		if(mouseHeld && clickedUIButton != noone)
 		{
-			for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
+			
+			
+			buttonClicked = true;
+			//var _objName = object_get_name(clickedUIButton.object_index);
+			//_objName == "oUIAbilityButton"
+			//if()
+			//{
+			//	
+			//}
+		}
+		else
+		{
+			if(ds_list_size(selectedUnitsList) > 0)
 			{
-				with(selectedUnitsList[| i])
+				for(var i = 0; i < ds_list_size(selectedUnitsList); i++)
 				{
-					selected = false;
-					action1Selected = false;
-					selectedAbility = ABILITY.ZERO;
-					//var oIndex = object_index;
-					//var oIndexName = object_get_name(object_index);
-					//var oIndexParentName = object_get_name(object_get_parent(object_index));
-					if(object_get_name(object_get_parent(object_index)) == "oUnit")
+					with(selectedUnitsList[| i])
 					{
-						groupSelected = false;
+						selected = false;
+						action1Selected = false;
+						selectedAbility = ABILITY.ZERO;
+						//var oIndex = object_index;
+						//var oIndexName = object_get_name(object_index);
+						//var oIndexParentName = object_get_name(object_get_parent(object_index));
+						if(object_get_name(object_get_parent(object_index)) == "oUnit")
+						{
+							groupSelected = false;
+						}
 					}
 				}
-			}
-			ds_list_clear(selectedUnitsList);
+				ds_list_clear(selectedUnitsList);
+			 }
 		}
+		
 		
 		
 		
@@ -83,7 +115,7 @@ if(!global.gamePaused)
 	if(mouse_check_button_released(mb_left))
 	{
 	
-		if(mouseClick)
+		if(mouseClick /*&& !uiClicked*/)
 		{
 			var _unit = collision_point(mouseXFirstClick, mouseYFirstClick, oEntity, false, true);
 		
@@ -93,7 +125,7 @@ if(!global.gamePaused)
 				selected = true;
 			}
 		}
-		else if(mouseHeld)
+		else if(mouseHeld &&/* !uiClicked && */!buttonClicked)
 		{
 			var _listSize = collision_rectangle_list(mouseXFirstClick, mouseYFirstClick, mouseXCurrent, mouseYCurrent, oUnit, false, true, selectedUnitsList, false);
 			
@@ -130,6 +162,33 @@ if(!global.gamePaused)
 				
 			}
 		}
+		else if(/*uiClicked &&*/ buttonClicked)
+		{
+			show_debug_message("Button: " + string(clickedUIButton));
+			
+			with(clickedUIButton.creatorEntityId)
+			{
+				if(object_get_name(object_get_parent(id.object_index)) == "oUnit")
+				{
+					if(selectedAbility == other.clickedUIButton.abilityNumber)
+					{
+						selectedAbility = ABILITY.ZERO;
+					}
+					else
+					{
+						selectedAbility = other.clickedUIButton.abilityNumber;
+					}
+				}
+				else if(object_get_name(object_get_parent(id.object_index)) == "oBuilding")
+				{
+					commitedAbility = other.clickedUIButton.abilityNumber;
+					
+				}
+				
+				
+			}
+		}
+			
 		
 		mouseXFirstClick = 0;
 		mouseYFirstClick = 0;
@@ -139,6 +198,11 @@ if(!global.gamePaused)
 		
 		mouseClick = false;
 		mouseHeld = false;
+		uiClicked = false;
+		buttonClicked = false;
+		
+		clickedUIButton = noone;
+		ds_list_clear(interactedUIElements);
 		
 		//ds_list_clear(_list);
 		//testMouseButtonReleased++;
@@ -150,23 +214,23 @@ if(!global.gamePaused)
 	///
 	///CHECK HOVER BEHAVIOUR
 	///
-	instanceMeeting = instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pDisplay);
-	
-	if(instanceMeeting != noone)
-	{
-		instanceMeeting.hovering = true;
-	}
-	else
-	{ 
-		with(pDisplay)
-		{
-			if(instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) == noone)
-			{
-				hovering = false;
-			}
-			
-		}
-	}
+	//instanceMeeting = instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pDisplay);
+	//
+	//if(instanceMeeting != noone)
+	//{
+	//	instanceMeeting.hovering = true;
+	//}
+	//else
+	//{ 
+	//	with(pDisplay)
+	//	{
+	//		if(instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), id) == noone)
+	//		{
+	//			hovering = false;
+	//		}
+	//		
+	//	}
+	//}
 	
 	//instanceMeeting = instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pDisplay);
 }

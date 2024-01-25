@@ -27,6 +27,11 @@ mouseYCurrent = 0;
 
 mouseClick = false;
 mouseHeld = false;
+uiClicked = false;
+buttonClicked = false;
 
-//UI HOVER BEHAVIOUR
-instanceMeeting = noone;
+//UI BEHAVIOUR
+clickedUIButton = noone;
+//instanceMeeting = noone;
+
+interactedUIElements = ds_list_create();

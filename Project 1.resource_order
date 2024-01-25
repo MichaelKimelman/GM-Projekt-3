@@ -16,6 +16,7 @@
     {"name":"Scripts","order":5,"path":"folders/Scripts.yy",},
     {"name":"Entities","order":1,"path":"folders/Scripts/Entities.yy",},
     {"name":"Buildings","order":2,"path":"folders/Scripts/Entities/Buildings.yy",},
+    {"name":"UI","order":3,"path":"folders/Scripts/Entities/UI.yy",},
     {"name":"Units","order":1,"path":"folders/Scripts/Entities/Units.yy",},
     {"name":"Sequences","order":11,"path":"folders/Sequences.yy",},
     {"name":"Shaders","order":6,"path":"folders/Shaders.yy",},
