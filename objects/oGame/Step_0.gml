@@ -164,7 +164,7 @@ if(!global.gamePaused)
 		}
 		else if(/*uiClicked &&*/ buttonClicked)
 		{
-			show_debug_message("Button: " + string(clickedUIButton));
+			//show_debug_message("Button: " + string(clickedUIButton));
 			
 			with(clickedUIButton.creatorEntityId)
 			{

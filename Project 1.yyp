@@ -73,6 +73,7 @@
     {"id":{"name":"sBase0","path":"sprites/sBase0/sBase0.yy",},},
     {"id":{"name":"MACROS","path":"scripts/MACROS/MACROS.yy",},},
     {"id":{"name":"sAbilityTemplate","path":"sprites/sAbilityTemplate/sAbilityTemplate.yy",},},
+    {"id":{"name":"oCamera","path":"objects/oCamera/oCamera.yy",},},
     {"id":{"name":"scrUIAbilityButton","path":"scripts/scrUIAbilityButton/scrUIAbilityButton.yy",},},
     {"id":{"name":"oBuilding","path":"objects/oBuilding/oBuilding.yy",},},
     {"id":{"name":"sBase1","path":"sprites/sBase1/sBase1.yy",},},

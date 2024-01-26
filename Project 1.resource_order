@@ -48,6 +48,7 @@
     {"name":"sMouseClick1","order":1,"path":"sprites/sMouseClick1/sMouseClick1.yy",},
     {"name":"MACROS","order":2,"path":"scripts/MACROS/MACROS.yy",},
     {"name":"sAbilityTemplate","order":3,"path":"sprites/sAbilityTemplate/sAbilityTemplate.yy",},
+    {"name":"oCamera","order":4,"path":"objects/oCamera/oCamera.yy",},
     {"name":"sBase1","order":1,"path":"sprites/sBase1/sBase1.yy",},
     {"name":"oUnitDisplay","order":1,"path":"objects/oUnitDisplay/oUnitDisplay.yy",},
     {"name":"sAbilityDisplay","order":1,"path":"sprites/sAbilityDisplay/sAbilityDisplay.yy",},
