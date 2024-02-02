@@ -60,6 +60,7 @@
     {"id":{"name":"oUIAbility","path":"objects/oUIAbility/oUIAbility.yy",},},
     {"id":{"name":"sMouseClick0","path":"sprites/sMouseClick0/sMouseClick0.yy",},},
     {"id":{"name":"sAbility2","path":"sprites/sAbility2/sAbility2.yy",},},
+    {"id":{"name":"oGrid","path":"objects/oGrid/oGrid.yy",},},
     {"id":{"name":"oUnit","path":"objects/oUnit/oUnit.yy",},},
     {"id":{"name":"sUnitsSelectedDisplay","path":"sprites/sUnitsSelectedDisplay/sUnitsSelectedDisplay.yy",},},
     {"id":{"name":"oBuilder","path":"objects/oBuilder/oBuilder.yy",},},

@@ -3,6 +3,8 @@
 
 
 draw_self();
+
+
 spriteInfo = sprite_get_info(sprite_index);
 
 if(selected || groupSelected)//CHANGE TO GROUPSELECTED

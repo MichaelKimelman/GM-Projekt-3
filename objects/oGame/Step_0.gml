@@ -212,6 +212,19 @@ if(!global.gamePaused)
 	
 	
 	///
+	/// GRID CREATE
+	///
+	
+}
+
+
+
+
+
+
+
+//OLD CODE
+	///
 	///CHECK HOVER BEHAVIOUR
 	///
 	//instanceMeeting = instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pDisplay);
@@ -233,15 +246,7 @@ if(!global.gamePaused)
 	//}
 	
 	//instanceMeeting = instance_position(device_mouse_x_to_gui(0), device_mouse_y_to_gui(0), pDisplay);
-}
 
-
-
-
-
-
-
-//OLD CODE
 //if(selecting)
 //{
 //	rectangleDrawBuffer++;

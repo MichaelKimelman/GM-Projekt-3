@@ -35,3 +35,6 @@ clickedUIButton = noone;
 //instanceMeeting = noone;
 
 interactedUIElements = ds_list_create();
+
+//Motion Planning
+mp_potential_settings(45, 10, 6, true);

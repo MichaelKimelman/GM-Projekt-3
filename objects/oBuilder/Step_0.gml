@@ -6,3 +6,8 @@
 // Inherit the parent event
 event_inherited();
 
+if(hasGameLoaded <= 50)
+{
+	hasGameLoaded++;
+}
+

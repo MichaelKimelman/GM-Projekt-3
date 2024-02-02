@@ -40,6 +40,7 @@
     {"name":"sAbility3","order":5,"path":"sprites/sAbility3/sAbility3.yy",},
     {"name":"oBase","order":1,"path":"objects/oBase/oBase.yy",},
     {"name":"sAbility2","order":4,"path":"sprites/sAbility2/sAbility2.yy",},
+    {"name":"oGrid","order":5,"path":"objects/oGrid/oGrid.yy",},
     {"name":"oBuilder","order":1,"path":"objects/oBuilder/oBuilder.yy",},
     {"name":"pDisplay","order":3,"path":"objects/pDisplay/pDisplay.yy",},
     {"name":"oCoordinateGetter","order":3,"path":"objects/oCoordinateGetter/oCoordinateGetter.yy",},

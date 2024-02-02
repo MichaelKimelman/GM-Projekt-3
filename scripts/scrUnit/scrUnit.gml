@@ -139,6 +139,90 @@ function UnitMoveToTarget()
 
 
 
+
+///
+/// Potential Path Movement  
+///
+function PotentialPathMove()
+{
+	UnitClickGetTargetPosition();
+	
+	if(mp_potential_path(path, xTargetPosition, yTargetPosition, moveSpd, 6, false))
+	{
+		path_start(path, moveSpd, path_action_stop, false);
+	}
+	
+	if(path_position == 1)
+	{
+		//path_end();
+		
+		if(commitedAbility != ABILITY.ZERO)//CHANGE TO IF(commitedAbility != -1) if(action1Commited)
+		{
+			state = ENTITYSTATE.ACTION;
+			//SET ABILITY SCRIPT TO [commitedAbility]
+			//ACTION STATE CALLS ABILITY EXECUTING SCRIPT
+		}
+		else
+		{
+			state = ENTITYSTATE.IDLE;
+		}
+	}
+}
+
+
+
+
+///
+/// Path Movement /w GRID
+///
+function PathMove()//MP GRID PATHS
+{
+	UnitClickGetTargetPosition();
+	
+	var _sprInfo = sprite_get_info(sprite_index);
+	var _dir = point_direction(x, y, xTargetPosition, yTargetPosition);
+	
+	var _tXOnset = lengthdir_x( _sprInfo.width/2 + 30, _dir);
+	var _tYOnset = lengthdir_y( _sprInfo.height/2 + 30, _dir);
+	
+	var _xOffset = lengthdir_x( _sprInfo.width/2 + 30 , _dir);
+	xOffset = _xOffset;
+	
+	//IF ENTITY IN WAY PUT OFFSET BEHIND OBJECT
+	
+	var _yOffset = lengthdir_y( _sprInfo.height/2 + 30, _dir);
+	yOffset = _yOffset;
+	//IF ENTITY IN WAY PUT OFFSET BEHIND OBJECT
+	
+	
+	if(mp_grid_path(global.grid, path, x + _xOffset, y + _yOffset, xTargetPosition + _tXOnset, yTargetPosition + _tYOnset, true))
+	{
+		path_start(path, moveSpd, path_action_stop, false);
+	}
+	
+	if(path_position == 1 && point_distance(x, y, xTargetPosition + _tXOnset,  yTargetPosition + _tYOnset) <= 50)
+	{
+		if(commitedAbility != ABILITY.ZERO)//CHANGE TO IF(commitedAbility != -1) if(action1Commited)
+		{
+			state = ENTITYSTATE.ACTION;
+			//SET ABILITY SCRIPT TO [commitedAbility]
+			//ACTION STATE CALLS ABILITY EXECUTING SCRIPT
+		}
+		else
+		{
+			state = ENTITYSTATE.IDLE;
+		}
+	}
+	
+	//if( x == xTargetPosition && y == yTargetPosition)
+	//{
+	//	state = ENTITYSTATE.IDLE;
+	//}//ADD TRANSITION TO ENTITYSTATE.ACTION
+}
+
+
+
+
 ///
 /// Basic Unit Collisions With Other Units
 ///

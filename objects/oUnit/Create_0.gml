@@ -22,5 +22,10 @@ noPhysicalMovementTimer = 0; //USED TO CHANGE STATE TO IDLE IF TOO LONG NO MOVEM
 
 entityScript[ENTITYSTATE.ACTION] = UnitExecuteAbility;
 
+path = path_add();
+
+xOffset = 0;
+yOffset = 0;
+
 //action1Selected = false;
 //action1Commited = false;

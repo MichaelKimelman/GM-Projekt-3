@@ -26,6 +26,8 @@ draw_text(200, 50, "mouseclick?: " + string(mouseClick));
 
 draw_text(200, 65, "mouse held?: " + string(mouseHeld));
 
+draw_text(200, 80, "Object 0: " + string(object_get_name(0)));
+
 //draw_text(200, 80, "object at -4?: " + object_get_name(-4));
 //draw_text(200, 250, "mouse x start: " + string(mouseXFirstClick));
 
